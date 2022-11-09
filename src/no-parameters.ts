@@ -9,25 +9,20 @@ import OrbImport = orb.OrbImport;
 import OrbRef = orb.OrbRef;
 import CustomParametersList = parameters.CustomParametersList;
 
+export const noParamJob = (
+  name: string,
+  orbImport: OrbImport
+): OrbRef<JobParameterLiteral> =>
+  new OrbRef(name, new CustomParametersList([]), orbImport);
 
-export function noParamJob(
-    name: string,
-    orbImport: OrbImport
-  ): OrbRef<JobParameterLiteral> {
-    return new OrbRef(name, new CustomParametersList([]), orbImport);
-  }
-  
-  export function noParamExecutor(
-    name: string,
-    orbImport: OrbImport
-  ): OrbRef<ExecutorParameterLiteral> {
-    return new OrbRef(name, new CustomParametersList([]), orbImport);
-  }
-  
-  export function noParamCommand(
-    name: string,
-    orbImport: OrbImport
-  ): OrbRef<CommandParameterLiteral> {
-    return new OrbRef(name, new CustomParametersList([]), orbImport);
-  }
-  
+export const noParamExecutor = (
+  name: string,
+  orbImport: OrbImport
+): OrbRef<ExecutorParameterLiteral> =>
+  new OrbRef(name, new CustomParametersList([]), orbImport);
+
+export const noParamCommand = (
+  name: string,
+  orbImport: OrbImport
+): OrbRef<CommandParameterLiteral> =>
+  new OrbRef(name, new CustomParametersList([]), orbImport);
