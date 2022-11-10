@@ -1,5 +1,6 @@
 # Orb Import for CircleCI Config SDK
 
+[![NPM Version](https://img.shields.io/npm/v/@voiceflow/circleci-config-sdk-orb-import)](https://www.npmjs.com/package/@voiceflow/circleci-config-sdk-orb-import)
 [![License](https://img.shields.io/badge/license-ISC-green)](./LICENSE)
 
 This package allows you to import and use external orbs with the [CircleCI Config SDK](https://github.com/CircleCI-Public/circleci-config-sdk-ts).
