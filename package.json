@@ -1,6 +1,6 @@
 {
   "name": "@voiceflow/circleci-config-sdk-orb-import",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight utility to import orbs for use with the CircleCI Config SDK",
   "main": "dist/index.js",
   "bugs": {
@@ -30,10 +30,14 @@
   },
   "scripts": {
     "build": "tsc",
+    "clean": "rm -r dist node_modules",
     "lint": "eslint \"./**/*.ts\"",
     "lint:fix": "yarn lint --fix",
     "lint:quiet": "yarn lint --quiet",
     "lint:report": "yarn lint:output"
   },
+  "files": [
+    "./dist/**"
+  ],
   "packageManager": "yarn@3.2.1"
 }
