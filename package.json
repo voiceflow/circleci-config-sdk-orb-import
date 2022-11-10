@@ -1,11 +1,16 @@
 {
-  "name": "circleci-config-sdk-orb-import",
+  "name": "@voiceflow/circleci-config-sdk-orb-import",
   "version": "0.1.0",
   "description": "A lightweight utility to import orbs for use with the CircleCI Config SDK",
   "main": "dist/index.js",
   "bugs": {
     "url": "https://github.com/voiceflow/circleci-config-sdk-orb-import/issues"
   },
+  "homepage": "https://github.com/voiceflow/circleci-config-sdk-orb-import",
+  "keywords": [
+    "circleci",
+    "sdk"
+  ],
   "author": "Voiceflow",
   "license": "ISC",
   "private": false,
