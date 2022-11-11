@@ -6,7 +6,7 @@ import { parse } from "yaml";
 import OrbImport = orb.OrbImport;
 
 export interface OrbVersionRef {
-  namespace: string;
+  owner: string;
   orb: string;
   version: string;
 }
@@ -16,22 +16,22 @@ export type OrbImportRef = { alias: string } & OrbVersionRef;
 /// Downloads the manifest for the given orb and generates the `OrbImport` for use in the SDK
 export async function importOrb({
   alias,
-  namespace,
+  owner,
   orb,
   version,
 }: OrbImportRef): Promise<OrbImport> {
-  const source = await fetchOrbSource({ namespace, orb, version });
+  const source = await fetchOrbSource({ owner, orb, version });
   const manifest = await generateOrbManifestFromSource(source);
-  return new OrbImport(alias, namespace, orb, version, undefined, manifest);
+  return new OrbImport(alias, owner, orb, version, undefined, manifest);
 }
 
 // Fetches the YAML source for the specified orb
 export async function fetchOrbSource({
-  namespace,
+  owner,
   orb,
   version,
 }: OrbVersionRef): Promise<string> {
-  const orbVersionRef = `${namespace}/${orb}@${version}`;
+  const orbVersionRef = `${owner}/${orb}@${version}`;
   const response = await fetch("https://circleci.com/graphql-unstable", {
     method: "POST",
     headers: {
@@ -58,16 +58,10 @@ export function generateOrbManifestFromSource(
   const source = parse(sourceYaml);
   /* eslint-disable no-restricted-syntax */
   for (const componentType of ["jobs", "commands", "executors"]) {
+    // eslint-disable-next-line guard-for-in
     for (const componentName in source[componentType]) {
-      if (
-        Object.prototype.hasOwnProperty.call(
-          source[componentType],
-          componentName
-        )
-      ) {
-        const parameterList = source[componentType][componentName].parameters;
-        source[componentType][componentName] = parameterList || {};
-      }
+      const parameterList = source[componentType][componentName].parameters;
+      source[componentType][componentName] = parameterList || {};
     }
   }
   /* eslint-enable no-restricted-syntax */
