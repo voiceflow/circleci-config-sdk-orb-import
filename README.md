@@ -93,45 +93,9 @@ orbs:
 
 ```
 
-## Limitations
+## Compatibility
 
-### Components Without Parameters
-
-The endpoint used to query the manifests for orb components (jobs, executors, and commands) currently omits any components that do not specify any custom parameters. This means that these components will not be included in the `OrbImport` object. This issue has been raised here: https://github.com/CircleCI-Public/visual-config-editor/issues/296
-
-In the meantime, this package provides three utility functions to facilitate the use of missing components: `noParamJob`, `noParamExecutor`, and `noParamCommand`. They can be used instead of the missing components. For example:
-
-```typescript
-import { importOrb, noParamJob } from "circleci-config-sdk-orb-import";
-
-// Instantiate a new Config
-const config = new CircleCI.Config();
-
-// Use the importOrb function to fetch a given external orb
-// This is equivalent to putting `vfcommon: voiceflow/common@0.15.1` in the `.circleci/config.yml` file
-const vfcommon = await importOrb({
-  alias: "vfcommon",
-  namespace: "voiceflow",
-  orb: "common",
-  version: "0.15.1",
-});
-config.importOrb(vfcommon);
-
-const queue_jobs = new CircleCI.Workflow("queue-jobs", [
-  new CircleCI.workflow.WorkflowJob(
-    // The `dummy_job` job has no parameters, but can still be used by calling `noParamJob` with the name
-    // of the job and the orb it originates from
-    noParamJob("dummy_job", vfcommon),
-    {
-      filters: { branches: { only: ["staging", "trying"] } },
-    }
-  ),
-]);
-```
-
-### Endpoint Failure
-
-The endpoint used to query the manifests for orbs is sometimes unreachable for 1-2 minutes at a time. Retrying the endpoint after a minute usually results in it succeeding again.
+This version has been tested with version `0.10.1` of the CircleCI Config SDK. Compatibility with other versions cannot be guaranteed.
 
 ## License
 
