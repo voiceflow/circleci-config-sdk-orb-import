@@ -93,6 +93,10 @@ orbs:
 
 ```
 
+## Compatibility
+
+This version has been tested with version `0.10.1` of the CircleCI Config SDK. Compatibility with other versions cannot be guaranteed.
+
 ## License
 
 Licensed under ISC
