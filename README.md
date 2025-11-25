@@ -1,3 +1,6 @@
+> [!CAUTION]
+> Update Nov 24, 2025: This repository has been archived and will not accept further changes.
+
 # Orb Import for CircleCI Config SDK
 
 [![NPM Version](https://img.shields.io/npm/v/@voiceflow/circleci-config-sdk-orb-import)](https://www.npmjs.com/package/@voiceflow/circleci-config-sdk-orb-import)
